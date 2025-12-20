@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+
+@admin.register(Order)
+
+class Order_admin(admin.ModelAdmin):
+    list_display = ("id", "status", "client")
