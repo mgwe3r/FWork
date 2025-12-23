@@ -10,4 +10,4 @@ class User_register_form(UserCreationForm):
 
     class Meta():
         model = User
-        fields = ["username", "email", "password", "password_check", "role", "phonenumbers"]
+        fields = ["username", "email", "password1", "password2", "role"]
