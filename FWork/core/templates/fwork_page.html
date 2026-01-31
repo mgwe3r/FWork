@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>Добро пожаловать, {{user.username}}</p>
+    <a href="{% url "profile_view" %}"><button>Перейти в личный кабинет</button></a>
+    {% else %}
+    <p>Вы не вошли в аккаунт</p>
+    <a href="{% url "login_view" %}"><button>Войти в аккаунт</button></a>
+    <a href="{% url "register_view" %}"><button>Зарегистрироватся</button></a>
+    {% endif %}
+    <a href="{% url "home" %}"><button>Перейти на главную</button></a>
+
+
+    <h1>{{fwork.title}}</h1>
+    <p>{{fwork.description}}</p>
+    <p>{{fwork.price}}</p>
+    <p>{{fwork.executor}}</p>
+    <p>{{fwork.category}}</p>
+    <p>{{fwork.created_at}}</p>
+    <p>{{fwork.updated_at}}</p>
+    {% if user.is_authenticated %}
+    <a href="{% url 'create_order' fwork.id %}"><button>Заказать</button></a>
+    {% else %}
+    <p>Вы не вошли в аккаунт и не можете заказать данный товар</p>
+    {% endif %}
+</body>
+</html>

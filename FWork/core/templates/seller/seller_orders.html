@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Привет {{user.username}}</h1>
+    <a href="{% url "home" %}"><button>Перейти на главную</button></a>
+    {% for i in orders %}
+    <h1>{{i.service.title}}</h1>
+    <p>{{i.client.username}}</p>
+    <p>{{i.service.price}}</p>
+    <p>{{i.created_at}}</p>
+    <a href="{% url "chat_view" i.id%}">Чат с покупателем</a>
+    {% empty %}
+    <h1>У вас еще ничего не заказали</h1>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+}
+
+:root{
+    --main_color: #1E90FF;
+}
+
+.header_main{
+    height: 100px;
+    width: 100%;
+    border: 1px solid var(--main_color);
+    background-color: var(--main_color);
+}
+
+.btn{
+    border: 1px solid black;
+    border-radius: 7px;
+}

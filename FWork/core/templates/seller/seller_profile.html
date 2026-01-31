@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Привет {{user.username}}</h1>
+    <h3>Ваша роль Продавец</h3>
+    <a href="{% url "service_create" %}"><button>Создать Фворк</button></a>
+    <a href="{% url "home" %}"><button>Перейти на главную</button></a>
+    <a href="{% url "seller_orders_view" %}"><button>Мои заказы</button></a>
+
+    <div class="main_div">
+        <h1>Ваши Фворки</h1>
+        {% for i in fworks %}
+        <h1>{{i.title}}</h1>
+        <p>{{i.description}}</p>
+        <p>{{i.executor}}</p>
+        <p>{{i.price}}</p>
+        {% empty %}
+        <p>Вы еще не сделали Фворков</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

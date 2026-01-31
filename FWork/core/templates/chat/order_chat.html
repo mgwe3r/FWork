@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for i in messages %}
+    {% if i.sender == user %}
+    <p>Вы</p>
+    {% else %}
+    <p>{{i.sender}}</p>
+    {% endif %}
+    {{i.text}}
+    {{i.created_at}}
+    {% empty %}
+    <p>Сообщений пока нет</p>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="text" placeholder="Введите текст" rows="3" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>

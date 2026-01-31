@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница | FWork</title>
+</head>
+<body>
+
+    <div class="header_main">
+        {% if user.is_authenticated %}
+        <a href="{% url "logout_view" %}"><button class="btn">Выйти из аккаунта </button></a>
+        <a href="{% url "profile_view" %}"><button class="btn">Перейти в личный кабинет</button></a>
+        {% else %}
+        <p>Вы не вошли в аккаунт</p>
+        <a href="{% url "login_view" %}"><button class="btn">Войти в аккаунт</button></a>
+        <a href="{% url "register_view" %}"><button class="btn">Зарегистрироватся</button></a>
+        {% endif %}
+    </div>
+    
+
+    <ul>
+    {% for i in fworks %}
+    <li>
+        <h1>{{i.title}}</h1>
+        <p>{{i.price}}</p>
+        <p>{{i.executor}}</p>
+        <a href="{% url 'fworks' i.id %}"><button>Подробнее</button></a>
+    </li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

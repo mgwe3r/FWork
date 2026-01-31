@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} {% if user.role == "client" %} {% endcomment %}
+    <h1>Привет {{user.username}}</h1>
+    <h3>Ваша роль Покупатель</h3>
+    <a href="{% url "home" %}"><button>Перейти на главную</button></a>
+    <a href="{% url "client_orders_view" %}"><button>Мои заказы</button></a>
+    {% comment %} {% else %}
+    <h1>ERROR 404</h1>
+    {% endif %} {% endcomment %}
+</body>
+</html>

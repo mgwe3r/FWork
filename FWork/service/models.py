@@ -5,13 +5,13 @@ class Service(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=10)
-    executor = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    executor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="services", blank=True, null=True)
     category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.id}-{self.title}-{self.description}-{self.price}"
+        return f"{self.title}-{self.executor.username}"
 
 
 # Модель Service (services/models.py):
